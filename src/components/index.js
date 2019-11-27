@@ -37,6 +37,13 @@ export default class extends Component {
     onChange: noop
   };
 
+  static getDerivedStateFromProps({ value }, inState) {
+    if (value !== inState.value) {
+      return { value };
+    }
+    return null;
+  }
+
   constructor(inProps) {
     super(inProps);
     const { value } = inProps;
