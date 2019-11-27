@@ -89,6 +89,7 @@ export default class extends Component {
   onMenuClick = (inEvent) => {
     const { onChange } = this.props;
     const { key, keyPath } = inEvent;
+    inEvent.domEvent.persist();
     this.setState({ value: [key], valuePath: keyPath }, () => {
       const event = objectAssign(inEvent, { target: { value: [key] } });
       onChange(event);

@@ -55,9 +55,11 @@ class App extends React.Component {
     }
   }
 
-  onMenuChange = ({ target: { value } }) => {
-    console.log('value',value);
-    this.setState({ value })
+  onMenuChange = (inEvent) => {
+    const { value } = inEvent.target;
+    console.log('value', value);
+    inEvent.domEvent.stopPropagation();
+    this.setState({ value });
   };
 
   render() {
