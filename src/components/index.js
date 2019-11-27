@@ -66,6 +66,7 @@ export default class extends Component {
       template,
       items,
       stopPropagation,
+      onClick,
       ...props
     } = this.props;
     const _value = this.state.value;
