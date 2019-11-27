@@ -1,7 +1,7 @@
 import ReactAntMenu from '../src/main';
 import ReactDOM from 'react-dom';
 import React from 'react';
-import { Menu } from 'antd';
+import { Menu, Button } from 'antd';
 import './assets/style.scss';
 
 class App extends React.Component {
@@ -55,13 +55,30 @@ class App extends React.Component {
     }
   }
 
+  onMenuChange = ({ target: { value } }) => {
+    console.log('value',value);
+    this.setState({ value })
+  };
+
   render() {
-    const { items } = this.state;
+    const { items, value } = this.state;
     return (
       <div className="app-container">
         <h1 className="is-title">Antd Menu</h1>
+        <Button
+          onClick={() => {
+            this.setState({ value: ['m3'] });
+          }}>
+          ChangeValue
+        </Button>
         <div className="sec-box">
-          <ReactAntMenu highlighted items={items} template={this.template} />
+          <ReactAntMenu
+            value={value}
+            onChange={this.onMenuChange}
+            highlighted
+            items={items}
+            template={this.template}
+          />
         </div>
       </div>
     );
