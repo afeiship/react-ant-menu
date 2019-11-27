@@ -38,6 +38,12 @@ class App extends React.Component {
         value: 'm2'
       },
       {
+        icon: 'mxx-icon',
+        label: '-',
+        value: '-'
+      },
+      {
+        disabled: true,
         icon: 'm3-icon',
         label: 'Menu3',
         value: 'm3'
@@ -51,7 +57,15 @@ class App extends React.Component {
     if (cb) {
       return <Menu.SubMenu key={value} title={_label} children={cb()} />;
     } else {
-      return <Menu.Item key={value}>{label}</Menu.Item>;
+      if (value === '-') {
+        return <Menu.Divider key={value}>{label}</Menu.Divider>;
+      } else {
+        return (
+          <Menu.Item key={value} disabled={item.disabled}>
+            {label}
+          </Menu.Item>
+        );
+      }
     }
   }
 
