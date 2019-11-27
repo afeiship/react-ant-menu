@@ -6,10 +6,21 @@
 npm install -S @feizheng/react-ant-menu
 ```
 
+## apis
+| property        | type | description |
+| --------------- | ---- | ----------- |
+| className       | -    | -           |
+| value           | -    | -           |
+| onChange        | -    | -           |
+| items           | -    | -           |
+| template        | -    | -           |
+| highlighted     | -    | -           |
+| stopPropagation | -    | -           |
+
 ## usage
 1. import css
   ```scss
-  @import "~react-ant-menu/style.scss";
+  @import "~@feizheng/react-ant-menu/dist/style.scss";
 
   // customize your styles:
   $react-ant-menu-options: ()
