@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import noop from '@feizheng/noop';
 import objectAssign from 'object-assign';
 import { Menu } from 'antd';
+import nxTreeWalk from '@feizheng/next-tree-walk';
 
 const CLASS_NAME = 'react-ant-menu';
 const RETURN_TEMPLATE = function({ item, selected }, cb) {
@@ -66,21 +67,16 @@ export default class extends Component {
       ...props
     } = this.props;
     const _value = this.state.value;
-    const walk = (inItems) => {
-      return inItems.map((item, index) => {
-        const children = item.children;
-        const independent = !(children && children.length);
-        const selected = this.getSelected(item);
-        const cb = () => walk(children);
-        const callback = independent ? noop : cb;
-        const target = { item, index, selected, independent };
-        return template.apply(this, [target, callback]);
-      });
-    };
     const selectedKeys = highlighted ? _value : [];
     return (
       <Menu selectedKeys={selectedKeys} onClick={this.onMenuClick} {...props}>
-        {walk(items)}
+        {nxTreeWalk(items, {
+          template,
+          callback: (args) => {
+            const { item } = args;
+            return Object.assign({ selected: this.getSelected(item) }, args);
+          }
+        })}
       </Menu>
     );
   }

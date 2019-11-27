@@ -16,6 +16,7 @@ export default merge(baseConfig, {
   }),
   externals: externals.base({
     '@feizheng/noop': '@feizheng/noop',
+    '@feizheng/next-tree-walk':'@feizheng/next-tree-walk',
     antd: 'antd'
   }),
   plugins: [plugins.clean(), plugins.copyStyles()]

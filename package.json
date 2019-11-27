@@ -1,6 +1,6 @@
 {
   "name": "@feizheng/react-ant-menu",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "React antd menu wrapper.",
   "main": "dist/index.js",
   "scripts": {
@@ -62,6 +62,7 @@
     "webpack-merge": "^4.2.1"
   },
   "dependencies": {
+    "@feizheng/next-tree-walk": "^1.0.0",
     "@feizheng/noop": "^1.0.0",
     "classnames": "^2.2.6",
     "prop-types": "^15.7.2",
