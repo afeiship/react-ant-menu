@@ -23,14 +23,12 @@ export default class extends Component {
     value: PropTypes.array,
     onChange: PropTypes.func,
     highlighted: PropTypes.bool,
-    stopPropagation: PropTypes.bool,
     items: PropTypes.array.isRequired,
     template: PropTypes.func.isRequired
   };
 
   static defaultProps = {
     highlighted: false,
-    stopPropagation: false,
     items: [],
     value: [],
     template: RETURN_TEMPLATE,
@@ -65,7 +63,6 @@ export default class extends Component {
       highlighted,
       template,
       items,
-      stopPropagation,
       onClick,
       ...props
     } = this.props;
@@ -89,20 +86,13 @@ export default class extends Component {
     );
   }
 
-  change(inEvent) {
+  onMenuClick = (inEvent) => {
     const { onChange } = this.props;
     const { key, keyPath } = inEvent;
     this.setState({ value: [key], valuePath: keyPath }, () => {
       const event = objectAssign(inEvent, { target: { value: [key] } });
       onChange(event);
     });
-  }
-
-  onMenuClick = (inEvent) => {
-    const { domEvent } = inEvent;
-    const { stopPropagation } = this.props;
-    stopPropagation && domEvent.stopProppagation();
-    this.change(inEvent);
   };
 
   render() {
