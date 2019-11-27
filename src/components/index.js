@@ -23,12 +23,14 @@ export default class extends Component {
     value: PropTypes.array,
     onChange: PropTypes.func,
     highlighted: PropTypes.bool,
+    stop: PropTypes.bool,
     items: PropTypes.array.isRequired,
     template: PropTypes.func.isRequired
   };
 
   static defaultProps = {
     highlighted: false,
+    stop: false,
     items: [],
     value: [],
     template: RETURN_TEMPLATE,
@@ -87,13 +89,12 @@ export default class extends Component {
   }
 
   onMenuClick = (inEvent) => {
-    const { onChange } = this.props;
+    const { onChange, stop } = this.props;
     const { key, keyPath } = inEvent;
-    inEvent.domEvent.persist();
-    this.setState({ value: [key], valuePath: keyPath }, () => {
-      const event = objectAssign(inEvent, { target: { value: [key] } });
-      onChange(event);
-    });
+    const enhancedEvent = objectAssign(inEvent, { target: { value: [key] } });
+    stop && inEvent.domEvent.stopPropagation();
+    this.setState({ value: [key], valuePath: keyPath });
+    onChange(enhancedEvent);
   };
 
   render() {
