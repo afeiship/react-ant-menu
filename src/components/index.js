@@ -63,6 +63,7 @@ export default class extends Component {
     const {
       value,
       highlighted,
+      stop,
       template,
       items,
       onClick,
