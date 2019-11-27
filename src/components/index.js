@@ -9,11 +9,7 @@ import { Menu } from 'antd';
 const CLASS_NAME = 'react-ant-menu';
 const RETURN_TEMPLATE = function({ item, selected }, cb) {
   const { value, label } = item;
-  if (cb) {
-    return <Menu.SubMenu key={value} title={label} children={cb()} />;
-  } else {
-    return <Menu.Item key={value}>{label}</Menu.Item>;
-  }
+  return <Menu.SubMenu key={value} title={label} children={cb()} />;
 };
 
 export default class extends Component {
@@ -73,12 +69,12 @@ export default class extends Component {
     const walk = (inItems) => {
       return inItems.map((item, index) => {
         const children = item.children;
-        const hasChild = children && children.length;
+        const independent = !(children && children.length);
         const selected = this.getSelected(item);
         const cb = () => walk(children);
-        const target = { item, index, selected };
-        const args = hasChild ? [target, cb] : [target];
-        return template.apply(this, args);
+        const callback = independent ? noop : cb;
+        const target = { item, index, selected, independent };
+        return template.apply(this, [target, callback]);
       });
     };
     const selectedKeys = highlighted ? _value : [];
