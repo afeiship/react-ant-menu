@@ -24,8 +24,8 @@ export default class extends Component {
     onChange: PropTypes.func,
     highlighted: PropTypes.bool,
     stopPropagation: PropTypes.bool,
-    items: PropTypes.array,
-    template: PropTypes.func
+    items: PropTypes.array.isRequired,
+    template: PropTypes.func.isRequired
   };
 
   static defaultProps = {
