@@ -1,6 +1,6 @@
 {
   "name": "@feizheng/react-ant-menu",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "React antd menu wrapper.",
   "main": "dist/index.js",
   "scripts": {

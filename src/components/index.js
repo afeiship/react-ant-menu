@@ -22,7 +22,11 @@ export default class extends Component {
     highlighted: PropTypes.bool,
     stop: PropTypes.bool,
     items: PropTypes.array.isRequired,
-    template: PropTypes.func.isRequired
+    template: PropTypes.func.isRequired,
+    itemsKey: PropTypes.oneOfType([
+       PropTypes.string,
+       PropTypes.func,
+    ]),
   };
 
   static defaultProps = {
@@ -31,7 +35,8 @@ export default class extends Component {
     items: [],
     value: [],
     template: RETURN_TEMPLATE,
-    onChange: noop
+    onChange: noop,
+    itemsKey:'children'
   };
 
   static getDerivedStateFromProps({ value }, inState) {
