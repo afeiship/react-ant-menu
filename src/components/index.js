@@ -68,6 +68,7 @@ export default class extends Component {
       stop,
       template,
       items,
+      itemsKey,
       onClick,
       ...props
     } = this.props;
@@ -77,6 +78,7 @@ export default class extends Component {
       <Menu selectedKeys={selectedKeys} onClick={this.onMenuClick} {...props}>
         {nxTreeWalk(items, {
           template,
+          itemsKey,
           callback: (args) => {
             const { item } = args;
             return Object.assign({ selected: this.getSelected(item) }, args);
