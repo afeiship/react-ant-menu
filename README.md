@@ -14,6 +14,7 @@ npm install -S @feizheng/react-ant-menu
 | onChange        | -    | -           |
 | items           | -    | -           |
 | template        | -    | -           |
+| itemsKey        | -    | -           |
 | highlighted     | -    | -           |
 | stopPropagation | -    | -           |
 
