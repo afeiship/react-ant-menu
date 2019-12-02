@@ -100,7 +100,7 @@ class App extends React.Component {
           <Dropdown
             overlay={
               <ReactAntMenu
-                // value={value}
+                value={value}
                 // onChange={this.onMenuChange}
                 highlighted
                 items={items}

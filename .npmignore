@@ -19,6 +19,7 @@ public
 tests
 postcss.config.js
 webpack.config.babel.js
-
+jest.config.js
+jest.setup.js
 
 
