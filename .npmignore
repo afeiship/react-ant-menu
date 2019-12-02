@@ -10,6 +10,7 @@ Rakefile
 **/node_modules
 test
 __test__
+__tests__
 src
 docs
 build
