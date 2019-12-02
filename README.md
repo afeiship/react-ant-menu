@@ -31,7 +31,7 @@ npm install -S @feizheng/react-ant-menu
   import ReactAntMenu from '../src/main';
   import ReactDOM from 'react-dom';
   import React from 'react';
-  import { Menu, Button } from 'antd';
+  import { Menu, Button, Dropdown } from 'antd';
   import './assets/style.scss';
 
   class App extends React.Component {
@@ -73,7 +73,7 @@ npm install -S @feizheng/react-ant-menu
           value: '-'
         },
         {
-          disabled: true,
+          disabled: false,
           icon: 'm3-icon',
           label: 'Menu3',
           value: 'm3'
@@ -126,13 +126,26 @@ npm install -S @feizheng/react-ant-menu
               template={this.template}
             />
           </div>
+          <div className="sec-box">
+            <Dropdown
+              overlay={
+                <ReactAntMenu
+                  // value={value}
+                  // onChange={this.onMenuChange}
+                  highlighted
+                  items={items}
+                  template={this.template}
+                />
+              }>
+              <Button>Dropdown</Button>
+            </Dropdown>
+          </div>
         </div>
       );
     }
   }
 
   ReactDOM.render(<App />, document.getElementById('app'));
-
   ```
 
 ## documentation

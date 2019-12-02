@@ -58,7 +58,7 @@ export default class extends Component {
     return null;
   }
 
-  get menuView() {
+  get childView() {
     const {
       value,
       highlighted,
@@ -112,7 +112,7 @@ export default class extends Component {
         data-component={CLASS_NAME}
         className={classNames(CLASS_NAME, className)}
         {...props}>
-        {this.menuView}
+        {this.childView}
       </div>
     );
   }
