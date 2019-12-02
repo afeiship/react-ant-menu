@@ -10,7 +10,7 @@ import nxTreeWalk from '@feizheng/next-tree-walk';
 const CLASS_NAME = 'react-ant-menu';
 const RETURN_TEMPLATE = function({ item, selected }, cb) {
   const { value, label } = item;
-  return <Menu.SubMenu key={value} title={label} children={cb()} />;
+  return <Menu.Item key={value} children={label} />;
 };
 
 export default class extends Component {
@@ -23,10 +23,7 @@ export default class extends Component {
     stop: PropTypes.bool,
     items: PropTypes.array.isRequired,
     template: PropTypes.func.isRequired,
-    itemsKey: PropTypes.oneOfType([
-       PropTypes.string,
-       PropTypes.func,
-    ]),
+    itemsKey: PropTypes.oneOfType([PropTypes.string, PropTypes.func])
   };
 
   static defaultProps = {
@@ -36,7 +33,7 @@ export default class extends Component {
     value: [],
     template: RETURN_TEMPLATE,
     onChange: noop,
-    itemsKey:'children'
+    itemsKey: 'children'
   };
 
   static getDerivedStateFromProps({ value }, inState) {
@@ -98,11 +95,23 @@ export default class extends Component {
   };
 
   render() {
-    const { className } = this.props;
+    const {
+      className,
+      value,
+      onChange,
+      items,
+      template,
+      highlighted,
+      stop,
+      itemsKey,
+      ...props
+    } = this.props;
+
     return (
       <div
         data-component={CLASS_NAME}
-        className={classNames(CLASS_NAME, className)}>
+        className={classNames(CLASS_NAME, className)}
+        {...props}>
         {this.menuView}
       </div>
     );
