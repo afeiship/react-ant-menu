@@ -86,24 +86,16 @@ export default class extends Component {
   }
 
   onMenuClick = (inEvent) => {
-    const { onChange, stop } = this.props;
+    const { onChange, stop, onClick } = this.props;
     const { key, keyPath } = inEvent;
     const enhancedEvent = objectAssign(inEvent, { target: { value: [key] } });
     stop && inEvent.domEvent.stopPropagation();
     this.setState({ value: [key], valuePath: keyPath });
     onChange(enhancedEvent);
+    onClick(inEvent);
   };
 
   render() {
-    const { className, onClick } = this.props;
-    const privateProps = { onClick };
-    return (
-      <div
-        data-component={CLASS_NAME}
-        className={classNames(CLASS_NAME, className)}
-        {...privateProps}>
-        {this.childView}
-      </div>
-    );
+    return this.childView;
   }
 }
