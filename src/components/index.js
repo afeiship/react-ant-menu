@@ -95,23 +95,13 @@ export default class extends Component {
   };
 
   render() {
-    const {
-      className,
-      value,
-      onChange,
-      items,
-      template,
-      highlighted,
-      stop,
-      itemsKey,
-      ...props
-    } = this.props;
-
+    const { className, onClick } = this.props;
+    const privateProps = { onClick };
     return (
       <div
         data-component={CLASS_NAME}
         className={classNames(CLASS_NAME, className)}
-        {...props}>
+        {...privateProps}>
         {this.childView}
       </div>
     );
