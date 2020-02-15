@@ -19,6 +19,7 @@ export default class extends Component {
     className: PropTypes.string,
     value: PropTypes.array,
     onChange: PropTypes.func,
+    onClick: PropTypes.func,
     highlighted: PropTypes.bool,
     stop: PropTypes.bool,
     items: PropTypes.array.isRequired,
@@ -33,6 +34,7 @@ export default class extends Component {
     value: [],
     template: RETURN_TEMPLATE,
     onChange: noop,
+    onClick: noop,
     itemsKey: 'children'
   };
 
