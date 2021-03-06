@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import noop from '@feizheng/noop';
+import noop from '@jswork/noop';
+import nxTreeWalk from '@jswork/next-tree-walk';
 import objectAssign from 'object-assign';
 import { Menu } from 'antd';
-import nxTreeWalk from '@feizheng/next-tree-walk';
 
 const CLASS_NAME = 'react-ant-menu';
-const RETURN_TEMPLATE = function({ item, selected }, cb) {
+const DEFAULT_TEMPLATE = function ({ item, selected }, cb) {
   const { value, label } = item;
   return <Menu.Item key={value} children={label} />;
 };
 
-export default class extends Component {
+export default class ReactAntMenu extends Component {
   static displayName = CLASS_NAME;
   static propTypes = {
     className: PropTypes.string,
@@ -32,7 +30,7 @@ export default class extends Component {
     stop: false,
     items: [],
     value: [],
-    template: RETURN_TEMPLATE,
+    template: DEFAULT_TEMPLATE,
     onChange: noop,
     onClick: noop,
     itemsKey: 'children'
